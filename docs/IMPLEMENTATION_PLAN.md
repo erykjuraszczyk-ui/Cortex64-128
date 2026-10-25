@@ -120,9 +120,11 @@ Acceptance for this increment:
 
 Current authoring environment has no Verilator or Icarus Verilog, so RTL simulation is configured but not yet confirmed. Do not mark the increment hardware-verified until CI or a local simulator completes the test scripts.
 
+
 ## Current verification checkpoint — v0.1.6
 
 The portable core currently has directed benches for basic execution, CSR/traps, data-memory faults, BRAM/SoC integration, and delayed memory responses with request backpressure. In the authoring environment, Python structural checks pass, but no RTL simulator is installed, so compile/simulation/lint results remain unconfirmed. Before widening the feature set, run all benches in CI with Verilator, review warnings and protocol assertion failures, and only then begin a vendor-specific FPGA/DDR4 integration phase.
+
 
 ## v0.1.9 integration checkpoint
 

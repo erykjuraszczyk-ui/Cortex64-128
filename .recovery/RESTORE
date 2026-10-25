@@ -1,1 +1,0 @@
-Restore the complete local v0.1.12 project snapshot. The restore workflow validates the archive, restores all project files, and removes these temporary transfer files.

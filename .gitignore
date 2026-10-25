@@ -12,3 +12,5 @@ out/
 *.mcs
 __pycache__/
 .pytest_cache/
+*.vcd
+*.fst

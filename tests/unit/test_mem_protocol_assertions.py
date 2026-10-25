@@ -10,8 +10,11 @@ ADAPTER = ROOT / "rtl" / "common" / "cortex_mem_timeout_adapter.sv"
 def test_protocol_checker_covers_stability_on_all_four_channels():
     text = CHECKER.read_text(encoding="utf-8")
     for token in (
-        "up_req_stalled_q", "down_req_stalled_q", "up_rsp_stalled_q",
-        "down_rsp_stalled_q", "upstream request VALID dropped before READY",
+        "up_req_stalled_q",
+        "down_req_stalled_q",
+        "up_rsp_stalled_q",
+        "down_rsp_stalled_q",
+        "upstream request VALID dropped before READY",
         "downstream request VALID dropped before READY",
         "upstream response VALID dropped before READY",
         "downstream response VALID dropped before READY",
@@ -44,9 +47,13 @@ def test_assertion_bench_covers_timeout_late_acceptance_drain_and_normal_respons
     for token in (
         "retaining stalled request",
         "quarantine did not retain old request and block reuse",
-        "Target eventually accepts the timed-out request", "consumed and discarded",
-        "normal response changed while upstream stalled", "accepted_count != 2",
-        "target_rsp_count != 2", "upstream_rsp_count != 2", "PASS: protocol assertions",
+        "Target eventually accepts the timed-out request",
+        "consumed and discarded",
+        "normal response changed while upstream stalled",
+        "accepted_count != 2",
+        "target_rsp_count != 2",
+        "upstream_rsp_count != 2",
+        "PASS: protocol assertions",
     ):
         assert token in text
 
