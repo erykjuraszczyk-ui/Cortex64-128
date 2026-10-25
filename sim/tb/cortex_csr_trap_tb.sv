@@ -142,9 +142,12 @@ module cortex_csr_trap_tb;
     if (dut.regs[14] !== 64'h55) $fatal(1, "CSRRWI old-value result failed: x14=%h", dut.regs[14]);
     if (dut.mscratch_q !== 64'h0a) $fatal(1, "mscratch expected 0x0a after CSRRC: %h", dut.mscratch_q);
     if (dut.regs[4] !== 64'h33) $fatal(1, "program did not resume after ECALL: x4=%h", dut.regs[4]);
-    if (dut.regs[6] !== 64'd24) $fatal(1, "ECALL mepc capture failed: x6=%h", dut.regs[6]);
+    // The handler reads mepc into x6, then advances x6 by 4 before MRET.
+    // Trap-entry mepc=24 is checked separately by the monitor below.
+    if (dut.regs[6] !== 64'd28) $fatal(1, "ECALL handler failed to advance mepc: x6=%h", dut.regs[6]);
     if (dut.regs[7] !== 64'd0) $fatal(1, "ECALL mtval should be zero: x7=%h", dut.regs[7]);
-    if (dut.regs[12] !== 64'd32) $fatal(1, "illegal trap mepc capture failed: x12=%h", dut.regs[12]);
+    // The illegal-trap handler likewise increments the captured mepc by 4.
+    if (dut.regs[12] !== 64'd36) $fatal(1, "illegal-trap handler failed to advance mepc: x12=%h", dut.regs[12]);
     if (dut.regs[13] !== 64'h3010_9073) $fatal(1, "illegal trap mtval capture failed: x13=%h", dut.regs[13]);
     if (dut.mepc_q !== 64'd36) $fatal(1, "MRET resume PC incorrect: mepc=%h", dut.mepc_q);
     if (dut.mcause_q !== 64'd2) $fatal(1, "mcause should retain illegal instruction code: %h", dut.mcause_q);
