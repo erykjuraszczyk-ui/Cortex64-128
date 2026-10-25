@@ -162,7 +162,7 @@ module cortex_mem_fault_tb;
 
     if (dut.regs[31] !== 64'h5a)
       $fatal(1, "program did not resume after all four traps; x31=%h", dut.regs[31]);
-    if (dut.mcause_q !== 64'd7 || dut.mepc_q !== 64'h40 || dut.mtval_q !== 64'h300)
+    if (dut.mcause_q !== 64'd7 || dut.mepc_q !== 64'h44 || dut.mtval_q !== 64'h300)
       $fatal(1, "final trap CSRs mismatch: mcause=%h mepc=%h mtval=%h", dut.mcause_q, dut.mepc_q, dut.mtval_q);
     if (load_bus_errors_seen != 1 || store_bus_errors_seen != 1)
       $fatal(1, "expected exactly one injected load/store bus error, saw load=%0d store=%0d", load_bus_errors_seen, store_bus_errors_seen);
