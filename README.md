@@ -72,3 +72,8 @@ This is a research prototype, not a fully compliant RV64I implementation. It doe
 ## v0.1.10 deterministic latency stress
 
 `cortex_mem_random_latency_tb.sv` uses a fixed-seed LFSR to vary request acceptance gaps and downstream response latency across 40 single-outstanding transactions. It checks upstream/downstream request stability under backpressure, response stability while the requester stalls, no overlapping target transactions, and matching upstream/target request-response ledgers with no timeout errors. This is a deterministic stress test: it is repeatable, but it is not exhaustive constrained-random verification. Python checks only validate the testbench structure; the bench must be compiled and executed by Verilator or Icarus to claim RTL simulation success.
+
+
+## v0.1.14 RV64I verification baseline
+
+See [RV64I verification inventory](docs/RV64I_VERIFICATION_v0.1.14.md) for the current decoder inventory, verification boundaries and required directed RTL tests. Static Python checks are structural guards only; they do not prove instruction execution or full RV64I compliance.
