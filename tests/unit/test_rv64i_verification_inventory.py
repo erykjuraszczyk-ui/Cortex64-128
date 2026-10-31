@@ -25,7 +25,7 @@ def test_core_contains_expected_base_integer_opcode_groups():
 def test_core_contains_signed_unsigned_load_store_and_branch_cases():
     text = RTL.read_text(encoding="utf-8")
     for fragment in ("3'b000: regs[mem_rd_q]", "3'b100: regs[mem_rd_q]",
-                     "3'b011: mem_wstrb_q", "3'b110: branch_taken",
+                     "3'b010: mem_wstrb_q", "3'b110: branch_taken",
                      "3'b111: branch_taken", "jalr_target",
                      "mem_fault_addr_q"):
         assert fragment in text
