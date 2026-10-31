@@ -147,7 +147,7 @@ module cortex_core #(
     input logic [63:0] tval_value
   );
     begin
-      mepc_q       <= {epc_value[63:2], 2'b00};
+      mepc_q       <= epc_value & 64'hffff_ffff_ffff_fffc;
       mcause_q     <= cause_value;
       mtval_q      <= tval_value;
       mstatus_q[7] <= mstatus_q[3];
