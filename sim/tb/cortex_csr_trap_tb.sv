@@ -2,7 +2,7 @@
 module cortex_csr_trap_tb;
   logic clk = 1'b0;
   logic rst_n = 1'b0;
-  always #5 clk = ~clk;
+  always #5 clk <= ~clk;
 
   logic mem_req_valid, mem_req_ready, mem_req_write;
   logic [63:0] mem_req_addr, mem_req_wdata;
