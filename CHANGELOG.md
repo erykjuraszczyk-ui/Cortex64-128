@@ -103,3 +103,11 @@
 - Added a 64-bit aligned, little-endian, single-outstanding memory request/response interface.
 - Added a smoke-test program covering arithmetic, branch redirects, SD/LD and EBREAK.
 - Added simulation memory model and Python encoding checks.
+
+
+## v0.1.14 — RV64I Instruction Verification & Compliance baseline
+
+- Added an explicit instruction decode inventory and compliance boundary document.
+- Added Python structural guards for RV64 opcode groups, load/store/branch paths and synchronous trap decode.
+- Clarified that structural checks and the software reference model do not establish RTL functional compliance.
+- Full directed RTL instruction programs and architectural-state comparison remain the next verification increment.
