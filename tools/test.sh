@@ -10,6 +10,11 @@ python3 sim/reference_model/rv64_smoke.py
 if command -v verilator >/dev/null 2>&1; then
   mkdir -p build
   verilator --binary --timing --Wall -Wno-fatal \
+    --top-module cortex_rv64i_directed_tb --Mdir build/obj_rv64i_directed \
+    rtl/cpu/cortex_core.sv sim/tb/cortex_rv64i_directed_tb.sv
+  build/obj_rv64i_directed/Vcortex_rv64i_directed_tb
+
+  verilator --binary --timing --Wall -Wno-fatal \
     --top-module cortex_core_tb --Mdir build/obj_core \
     rtl/cpu/cortex_core.sv sim/tb/cortex_core_tb.sv
   build/obj_core/Vcortex_core_tb
@@ -74,6 +79,10 @@ if command -v verilator >/dev/null 2>&1; then
   build/obj_mem_protocol_assertions/Vcortex_mem_protocol_assertions_tb
 elif command -v iverilog >/dev/null 2>&1; then
   mkdir -p build
+  iverilog -g2012 -s cortex_rv64i_directed_tb -o build/cortex_rv64i_directed_tb.vvp \
+    rtl/cpu/cortex_core.sv sim/tb/cortex_rv64i_directed_tb.sv
+  vvp build/cortex_rv64i_directed_tb.vvp
+
   iverilog -g2012 -s cortex_core_tb -o build/cortex_core_tb.vvp \
     rtl/cpu/cortex_core.sv sim/tb/cortex_core_tb.sv
   vvp build/cortex_core_tb.vvp
