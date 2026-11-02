@@ -51,3 +51,6 @@ verilator --lint-only --timing --Wall -Wno-fatal --top-module cortex_mem_random_
 verilator --lint-only --timing --Wall -Wno-fatal --top-module cortex_mem_protocol_assertions_tb \
   rtl/common/cortex_mem_timeout_adapter.sv sim/checkers/cortex_mem_protocol_assertions.sv \
   sim/tb/cortex_mem_protocol_assertions_tb.sv
+
+verilator --lint-only --timing --Wall -Wno-fatal --top-module cortex_rv64i_directed_tb \
+  rtl/cpu/cortex_core.sv sim/tb/cortex_rv64i_directed_tb.sv
