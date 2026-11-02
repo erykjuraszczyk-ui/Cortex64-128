@@ -1,3 +1,12 @@
+# Cortex64/128 v0.1.15 — Directed RV64I ALU RTL execution baseline
+
+- Added a SystemVerilog testbench executing a directed integer ALU program on the actual core.
+- Added architectural register-state checks for ADDI, ADD, SUB, XOR, OR, AND, SLT, SLTU, SLLI, SRLI and SRAI.
+- Added an instret assertion and bounded watchdog.
+- Integrated the bench into Verilator/Icarus test and Verilator lint runners.
+- Added Python structural guards for testbench and runner integration.
+- This is a focused RTL execution increment, not a complete RV64I compliance claim.
+
 # Changelog
 
 ## 0.1.12 — Ready/valid protocol assertions and timeout correction
